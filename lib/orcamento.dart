@@ -181,7 +181,7 @@ class _orcamentoState extends State<orcamento> {
               },
               child: Text(
                 'OK',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.green),
               ),
             ),
           ],
@@ -273,9 +273,6 @@ class _orcamentoState extends State<orcamento> {
                 SizedBox(
                   height: 15,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -340,7 +337,7 @@ class _orcamentoState extends State<orcamento> {
               onPressed: () {
                 Navigator.of(context).pop(); // Fecha o diálogo
               },
-              child: Text('OK', style: TextStyle(color: Colors.black)),
+              child: Text('OK', style: TextStyle(color: Colors.green),),
             ),
           ],
         );
@@ -551,7 +548,7 @@ class _orcamentoState extends State<orcamento> {
                       'Gostaria de Garçom para bebidas?',
                       style: GoogleFonts.robotoCondensed(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 20,
                       ),
                     ),
                     Row(

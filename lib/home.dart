@@ -7,7 +7,7 @@ class home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Uri numero = Uri.parse('https://wa.me/553198508713');
+    final Uri numero = Uri.parse('https://wa.me/553199539402');
     final Uri instagram =
         Uri.parse('https://www.instagram.com/pizzaria_homes/');
     return Scaffold(
@@ -22,19 +22,18 @@ class home extends StatelessWidget {
               Image.asset(
                 'assets/images/logo.png',
                 width: MediaQuery.of(context).size.width *
-                    0.8, // Ajuste de largura responsiva
+                    0.7, // Ajuste de largura responsiva
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
 
               Container(
-                margin: EdgeInsets.only(top: 0, bottom: 30),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text(
                     'Rodízio De Pizza',
                     style: GoogleFonts.gloriaHallelujah(
                       color: const Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 35,
+                      fontSize: 30,
                       wordSpacing: 7,
                       decorationStyle: TextDecorationStyle.solid,
                       decorationColor: const Color.fromARGB(255, 0, 0, 0),
@@ -42,9 +41,25 @@ class home extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'Pizza feita com paixão, servida com carinho.',
+                    style: GoogleFonts.gloriaHallelujah(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 16,
+                      decorationStyle: TextDecorationStyle.solid,
+                      decorationColor: const Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 35,
+              ),
 
               Container(
-                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
