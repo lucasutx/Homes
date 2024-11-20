@@ -468,7 +468,7 @@ class _orcamentoState extends State<orcamento> {
         (garcom * 140) +
         (garcomBebida * 140) +
         (pizzaiolo * 140) +
-        70 +
+        70 + 10 +
         50;
 
     if (selecionado == false) {
