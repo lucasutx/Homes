@@ -113,7 +113,7 @@ class _funcionamentoState extends State<funcionamento> {
                         'SIM, SERÃO LEVADAS 10 PIZZAS A MAIS, PARA A RESERVA. CASO NECESSÁRIO E AUTORIZADO, SERÃO SERVIDAS E SERÁ COBRADO À PARTE 28,90 REAIS CADA. CASO NÃO SEJAM SERVIDAS TODAS AS PIZZAS CONTRATADAS, AS MESMAS SERÃO EMBALADAS E DEIXADAS PARA CONGELAR.',
                       ),
                       _buildQuestion(
-                        'QUANTAS HORAS DE EVENTO?',
+                        'QUANTAS HORAS DE \n EVENTO?',
                         'SÃO 4 HORAS DE EVENTO, A PARTIR DO MOMENTO QUE COMEÇAMOS A SERVIR. ESTÃO INCLUÍDAS TODAS AS PIZZAS DO CARDÁPIO (DOCES E SALGADAS).\n\nCHEGAMOS 1 HORA ANTES PARA PODER ORGANIZAR TODO O NECESSÁRIO PARA O INÍCIO DO EVENTO.',
                       ),
                       _buildQuestion(
@@ -125,7 +125,7 @@ class _funcionamentoState extends State<funcionamento> {
                 ),
               ),
               Container(
-                height: 70, // Ajuste a altura conforme necessário
+                height: 50, // Ajuste a altura conforme necessário
                 width: double.infinity,
                 color: const Color(0xFF800000),
                 child: Align(
@@ -149,8 +149,8 @@ class _funcionamentoState extends State<funcionamento> {
 
   Widget _buildQuestion(String question, String answer) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(05),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),

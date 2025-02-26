@@ -111,7 +111,7 @@ class home extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 70), // Espaço entre os botões
+              SizedBox(height: 30), // Espaço entre os botões
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -121,8 +121,8 @@ class home extends StatelessWidget {
                       Navigator.pushNamed(context, '/cardapio');
                     },
                     icon: Container(
-                      width: 70,
-                      height: 60,
+                      width: 40,
+                      height: 50,
                       child: Icon(Icons.restaurant_menu,
                           color: Color(0xFF800000)), // Ícone do cardápio
                     ),
@@ -143,8 +143,8 @@ class home extends StatelessWidget {
                       Navigator.pushNamed(context, '/funcionamento');
                     },
                     icon: Container(
-                      width: 50,
-                      height: 60,
+                      width: 35,
+                      height: 50,
                       child: Icon(Icons.receipt_long,
                           color:
                               Color(0xFF800000)), // Ícone de Como Funcionamos
@@ -164,7 +164,7 @@ class home extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height: 20), // Espaço entre os botões
+              SizedBox(height: 15), // Espaço entre os botões
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -174,8 +174,8 @@ class home extends StatelessWidget {
                       Navigator.pushNamed(context, '/orcamento');
                     },
                     icon: Container(
-                      width: 60,
-                      height: 60,
+                      width: 40,
+                      height: 50,
                       child: Icon(Icons.payment,
                           color:
                               Color(0xFF800000)), // Ícone de Como Funcionamos
@@ -197,8 +197,8 @@ class home extends StatelessWidget {
                       Navigator.pushNamed(context, '/fotos');
                     },
                     icon: Container(
-                      width: 60,
-                      height: 60,
+                      width: 40,
+                      height: 50,
                       child: Icon(Icons.monochrome_photos,
                           color:
                               Color(0xFF800000)), // Ícone de Como Funcionamos

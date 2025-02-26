@@ -29,7 +29,7 @@ dev_dependencies:
   
 flutter_launcher_icons:
   android: "launcher_icon"
-  image_path: 'assets/images/logo.png'
+  image_path: 'assets/images/logo2.jpg'
   min_sdk_android: 21 # android min sdk min:16, default 
   
 
@@ -60,6 +60,7 @@ flutter:
     - assets/images/21.jpg
     - assets/images/22.jpg
     - assets/images/icon.png
+    - assets/images/logo2.jpg
     - assets/images/logo.png
     - assets/images/car1.jpg
     - assets/images/car2.jpg

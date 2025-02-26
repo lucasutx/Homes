@@ -12,338 +12,162 @@ class orcamento extends StatefulWidget {
 class _orcamentoState extends State<orcamento> {
   bool? selecionado = false;
 
-  void showResultadoDialogBebida(double calculoFinal) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Valor do Orçamento',
-              style: GoogleFonts.gloriaHallelujah(
-                fontSize: 25,
-              )),
-          content: SingleChildScrollView(
+void showResultadoDialogBebida(double calculoFinal) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          'Valor do Orçamento',
+          style: GoogleFonts.gloriaHallelujah(fontSize: 22),
+        ),
+        content: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.9,
+              maxHeight: MediaQuery.of(context).size.height * 0.7,
+            ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: Colors.amber[300],
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(Icons.info,
-                          color: const Color.fromARGB(255, 255, 255, 255)),
-                      Text(
-                        ' Caso queria alguma mudança,\n falar com o contratante',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
+                buildInfoBox('Caso queira alguma mudança, fale com o contratante'),
                 SizedBox(height: 15),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' ${qttd.toStringAsFixed(0)} pizzas à R\$${pizza.toStringAsFixed(2)} pizzas',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somapizza.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' $garcom garçom(s) exclusivos\n para as pizzas à R\$140.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somaGarcon.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' $garcomBebida garçom(s) exclusivos\n para as bebidas à R\$140.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somaGarconBebida.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' $pizzaiolo pizzaiolo(s) à R\$140.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somaPizaiolo.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' Deslocamento à R\$80.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' Gás à R\$50.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'O custo total é de: \n      ',
-                  style: TextStyle(
-                      fontSize: 18, color: const Color.fromARGB(255, 0, 0, 0)),
-                ),
-                Text(
-                  'R\$ ${calculoFinal.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 23, color: Colors.green),
-                )
+                buildResumoItem(Icons.done, '${qttd.toStringAsFixed(0)} pizzas à R\$${pizza.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somapizza.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, '$garcom garçom(s) para pizzas à R\$150.00'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somaGarcon.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, '$garcomBebida garçom(s) para bebidas à R\$150.00'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somaGarconBebida.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, '$pizzaiolo pizzaiolo(s) à R\$150.00'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somaPizaiolo.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, 'Deslocamento à R\$80.00'),
+                buildResumoItem(Icons.done, 'Gás à R\$50.00'),
+                SizedBox(height: 20),
+                buildTotal(calculoFinal),
               ],
             ),
           ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
-              },
-              child: Text(
-                'OK',
-                style: TextStyle(color: Colors.green),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text('OK', style: TextStyle(color: Colors.green)),
+          ),
+        ],
+      );
+    },
+  );
+}
 
-  void showResultadoDialog(double calculoFinal) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Valor do Orçamento',
-              style: GoogleFonts.gloriaHallelujah(
-                fontSize: 25,
-              )),
-          content: SingleChildScrollView(
+void showResultadoDialog(double calculoFinal) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          'Valor do Orçamento',
+          style: GoogleFonts.gloriaHallelujah(fontSize: 22),
+        ),
+        content: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.9,
+              maxHeight: MediaQuery.of(context).size.height * 0.7,
+            ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  padding: EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: Colors.amber[300],
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(Icons.info,
-                          color: const Color.fromARGB(255, 255, 255, 255)),
-                      Text(
-                        ' Caso queria alguma mudança,\n falar com o contratante',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' ${qttd.toStringAsFixed(0)} pizzas à R\$${pizza.toStringAsFixed(2)} pizzas',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somapizza.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' $garcom garçom(s) exclusivos\n para as pizzas à R\$140.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somaGarcon.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' $pizzaiolo pizzaiolo(s) à R\$140.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.arrow_forward, color: Colors.green),
-                    Text(' SubTotal: ${somaPizaiolo.toStringAsFixed(2)}',
-                        style: TextStyle(fontSize: 18))
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' Deslocamento à R\$80.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.done, color: Colors.green),
-                    Text(
-                      ' Gás à R\$50.00',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  'O custo total é de: \n      ',
-                  style: TextStyle(
-                      fontSize: 18, color: const Color.fromARGB(255, 0, 0, 0)),
-                ),
-                Text(
-                  'R\$ ${calculoFinal.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 23, color: Colors.green),
-                )
+                buildInfoBox('Caso queira alguma mudança, fale com o contratante'),
+                SizedBox(height: 10),
+                buildResumoItem(Icons.done, '${qttd.toStringAsFixed(0)} pizzas à R\$${pizza.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somapizza.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, '$garcom garçom(s) exclusivos para pizzas à R\$150.00'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somaGarcon.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, '$pizzaiolo pizzaiolo(s) à R\$150.00'),
+                buildResumoItem(Icons.arrow_forward, 'SubTotal: R\$${somaPizaiolo.toStringAsFixed(2)}'),
+                buildResumoItem(Icons.done, 'Deslocamento à R\$80.00'),
+                buildResumoItem(Icons.done, 'Gás à R\$50.00'),
+                SizedBox(height: 10),
+                buildTotal(calculoFinal),
               ],
             ),
           ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
-              },
-              child: Text('OK', style: TextStyle(color: Colors.green),),
-            ),
-          ],
-        );
-      },
-    );
-  }
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text('OK', style: TextStyle(color: Colors.green)),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Widget buildResumoItem(IconData icon, String text) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 3),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, color: Colors.green, size: 20),
+        SizedBox(width: 5),
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildInfoBox(String text) {
+  return Container(
+    padding: EdgeInsets.all(7),
+    decoration: BoxDecoration(
+      color: Colors.amber[300],
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.2),
+          blurRadius: 10,
+          offset: Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Icon(Icons.info, color: Colors.white),
+        SizedBox(width: 5),
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildTotal(double calculoFinal) {
+  return Column(
+    children: [
+      Text(
+        'O custo total é de:',
+        style: TextStyle(fontSize: 18, color: Colors.black),
+      ),
+      Text(
+        'R\$ ${calculoFinal.toStringAsFixed(2)}',
+        style: TextStyle(fontSize: 23, color: Colors.green, fontWeight: FontWeight.bold),
+      ),
+    ],
+  );
+}
+
 
   void showInvalidoDialog() {
     showDialog(
@@ -460,15 +284,15 @@ class _orcamentoState extends State<orcamento> {
 
     somapizza = (qttd * pizza);
 
-    somaGarcon = 140 * garcom.toDouble();
-    somaGarconBebida = 140 * garcomBebida.toDouble();
-    somaPizaiolo = 140 * pizzaiolo.toDouble();
+    somaGarcon = 150 * garcom.toDouble();
+    somaGarconBebida = 150 * garcomBebida.toDouble();
+    somaPizaiolo = 150 * pizzaiolo.toDouble();
 
     double calculoFinal = ((qttd) * pizza) +
-        (garcom * 140) +
-        (garcomBebida * 140) +
-        (pizzaiolo * 140) +
-        70 + 10 +
+        (garcom * 150) +
+        (garcomBebida * 150) +
+        (pizzaiolo * 150) +
+        80 +
         50;
 
     if (selecionado == false) {
@@ -548,7 +372,7 @@ class _orcamentoState extends State<orcamento> {
                       'Gostaria de Garçom para bebidas?',
                       style: GoogleFonts.robotoCondensed(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
                     Row(
